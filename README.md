@@ -110,7 +110,7 @@ The server will start on http://localhost:3001
     - **Method:** GET
     - **Description:** Retrieves all transactions with pagination.
 
-        #### Query Parameters
+    #### Query Parameters
       - **page:** (optional) The page number to retrieve, default is 1.
       - **limit:** (optional) The number of transactions per page, default is 10.
 
