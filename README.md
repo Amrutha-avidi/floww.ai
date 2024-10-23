@@ -315,7 +315,7 @@ The API uses **JWT tokens** for authentication. Each authenticated request must 
 ### Transaction
    {
      amount: Number,
-     type: String (e.g., "income" or "expense"),
+     type: String ( "income" or "expense"),
      category: String,
      date: Date,
      user: ObjectId (reference to the User)
