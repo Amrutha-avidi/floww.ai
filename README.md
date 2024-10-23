@@ -266,9 +266,9 @@ This project is a basic API built using **Node.js**, **Express**, and **MongoDB*
         
       #### Response Example
       
-      {
-        "message": "Updated transaction successfully"
-      }
+        {
+          "message": "Updated transaction successfully"
+        }
       
         
       #### Possible Errors
@@ -282,7 +282,7 @@ This project is a basic API built using **Node.js**, **Express**, and **MongoDB*
   - **Description**: Deletes a specific transaction by its transaction_id.
       
       ##### URL Parameters
-        - **id**: The unique identifier of the transaction.
+      - **id**: The unique identifier of the transaction.
       #### Request Header
       `Authorization: Bearer <your-jwt-token>`
       
