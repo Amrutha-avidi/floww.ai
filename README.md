@@ -49,6 +49,9 @@ The server will start on http://localhost:3001
 ### Middleware
 - **Authentication:** All routes related to transactions are protected and require a valid JWT token.
 
+## Authentication 
+The API uses **JWT tokens** for authentication. Each authenticated request must include a valid token.You can obtain the token by logging in via the `/api/auth/login` endpoint.
+
 ## Models
 
 ### User
