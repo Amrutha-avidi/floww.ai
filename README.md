@@ -241,30 +241,47 @@ This project is a basic API built using **Node.js**, **Express**, and **MongoDB*
     #### Possible Errors
    - **500:** Internal server error.
 
-#### 8. Get transaction by transaction id
-  - **URL**: `/api/transactions/:id`
+#### 8. Get Transactions for a Specific User
+  - **URL**: `/api/transactions/user/:userId`
   - **Method**: GET
-  - **Description**: Retrieves all transactions of a specific user, identified by the user_id, and ensures the transactions belong to the authenticated user.
-      
+  - **Description**: Retrieves all transactions for a specific user identified by their user ID.
+         
     ##### URL Parameters
-      - **id**: The unique identifier of the user.
+      - **userId**: The unique identifier of the user whose transactions are being retrieved..
     #### Request Header
-    `Authorization: Bearer <your-jwt-token>`
+    `GET /user/64f3bfc8dfb0a9159cbf7a26`
         
       ##### Response Example (Success)
           
-          {
-            "_id": "64f3bfc8dfb0a9159cbf7a28",
-            "amount": 100,
-            "type": "income",
-            "category": "salary",
-            "date": "2024-10-20T00:00:00.000Z",
-            "user": "64f3bfc8dfb0a9159cbf7a26"
-          }
-          
+          [
+              {
+                "_id": "64f3bfc8dfb0a9159cbf7a28",
+                "amount": 100,
+                "type": "income",
+                "category": "salary",
+                "date": "2024-10-20T00:00:00.000Z",
+                "user": "64f3bfc8dfb0a9159cbf7a26"
+              },
+              {
+                "_id": "64f3bfc8dfb0a9159cbf7a29",
+                "amount": 50,
+                "type": "expense",
+                "category": "groceries",
+                "date": "2024-10-21T00:00:00.000Z",
+                "user": "64f3bfc8dfb0a9159cbf7a26"
+              }
+            ]
+
+      #### Response Fields:
+       - **_id:** The unique identifier of the transaction.
+       - **amount:** The amount of the transaction.
+       - **type:** The type of transaction (e.g., "income" or "expense").
+       - **category:** The category of the transaction (e.g., "salary", "groceries").
+       - **date:** The date when the transaction occurred.
+       - **user:** The ID of the user who owns the transaction.    
 
       #### Possible Errors
-    - **404:** Transaction not found, or it does not belong to the logged-in user.
+    - **404:** No transactions found for the given user ID.
     - **500:** Internal server error.
 
     #### API Result
@@ -301,7 +318,10 @@ This project is a basic API built using **Node.js**, **Express**, and **MongoDB*
       #### Possible Errors
         - **404:** Transaction not found
         - **400:** Invalid input.
-        - **500:** Internal server error.
+        - **500:** Internal server error
+     #### API Result
+    ![8  Updating Transaction By Id](https://github.com/user-attachments/assets/7b136a00-79c3-439a-8a02-43d23f48e831)
+
     
 #### 10. Delete a Specific Transaction by transaction_id
   - **URL**: `/api/transactions/:id`
@@ -324,6 +344,10 @@ This project is a basic API built using **Node.js**, **Express**, and **MongoDB*
       #### Possible Errors
       - **404:** Transaction not found
       - **500:** Internal server error.
+      - 
+     #### API Result
+    ![7  Delete Transaction BY ID](https://github.com/user-attachments/assets/afb8b694-a1c3-420d-a7cf-a3690b43c489)
+
 
 ### Middleware
 - **Authentication**: All routes related to transactions are protected and require a valid JWT token.
