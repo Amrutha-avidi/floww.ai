@@ -25,6 +25,12 @@ This project is a basic API built using **Node.js**, **Express**, and **MongoDB*
 2. Navigate into the project directory: 
     ``` bash 
     cd floww.ai
-3. Install the dependencies
+3. Install the node_modules
     ``` bash
     npm install
+The server will start on http://localhost:3001
+
+## API Endpoints
+
+### Authentication Routes
+- **POST /api/auth/register:** Register a new user.
