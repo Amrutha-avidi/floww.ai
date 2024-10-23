@@ -92,16 +92,16 @@ This project is a basic API built using **Node.js**, **Express**, and **MongoDB*
    - **Description**: Adds a new transaction for the authenticated user.
 
    #### Request Body
-      ```json
+      
       {
         "amount": 100,
         "type": "income",
         "category": "salary",
         "date": "2024-10-20"
       }
-      ```
+     
    #### Response Body
-      ```json
+      
       {
         "_id": "64f3bfc8dfb0a9159cbf7a28",
         "amount": 100,
@@ -111,22 +111,22 @@ This project is a basic API built using **Node.js**, **Express**, and **MongoDB*
         "user": "64f3bfc8dfb0a9159cbf7a26",
         "__v": 0
       }
-      ```
+     
    #### Possible Errors
    - **400:** Invalid input data.
    - **500:** Internal server error.
 
 #### 4. Get all transactions with pagination
-    - **URL**: `/api/transactions`
-    - **Method**: GET
-    - **Description**: Retrieves all transactions with pagination.
+  - **URL**: `/api/transactions`
+  - **Method**: GET
+  - **Description**: Retrieves all transactions with pagination.
 
     #### Query Parameters
       - **page**: (optional) The page number to retrieve, default is 1.
       - **limit**: (optional) The number of transactions per page, default is 10.
 
     ##### Response Example
-        ```json
+        
         {
           "transactions": [
             {
@@ -141,7 +141,7 @@ This project is a basic API built using **Node.js**, **Express**, and **MongoDB*
           "totalPages": 3,
           "currentPage": 1
         }
-        ```
+        
 
     #### Possible Errors
     - **500:** Internal server error.
@@ -288,11 +288,11 @@ This project is a basic API built using **Node.js**, **Express**, and **MongoDB*
       `Authorization: Bearer <your-jwt-token>`
       
       #### Response Example
-        ```json
+       
         {
           "message": "Transaction deleted successfully"
         }
-        ```
+      
       
       #### Possible Errors
       - **404:** Transaction not found
