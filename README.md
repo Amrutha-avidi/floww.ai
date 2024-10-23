@@ -67,19 +67,19 @@ This project is a basic API built using **Node.js**, **Express**, and **MongoDB*
    - **Description**: Logs in a registered user with their name and password.
    
    ##### Request Body
-      ```json
+      
       {
         "name": "your_registered_name",
         "password": "your_registered_password"
       }
-      ```
+      
    #### Response Body
-      ```json
+     
       {
         "message": "Login successful",
         "token": "your_jwt_token"
       }
-      ```
+      
    #### Possible Errors
    - **400:** Invalid credentials.
    - **500:** Error logging in.

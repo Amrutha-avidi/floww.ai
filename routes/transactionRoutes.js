@@ -130,12 +130,12 @@ router.get('/month-wise-report', authenticate, async (req, res) => {
 });
 
 
-// Get all the transaction of a user  by user_id
+// Get transaction by transaction id
 router.get('/:id', authenticate, async (req, res) => {
     const { id } = req.params; // Extract transaction ID from route params
 
     try {
-        const transaction = await Transaction.findOne({ _id: id, user: req.user.id }); // Ensure the transaction belongs to the logged-in user
+        const transaction = await Transaction.findOne({ _id: id }); 
 
         if (!transaction) {
             return res.status(404).send({ message: 'Transaction not found' });
