@@ -195,12 +195,34 @@ The server will start on http://localhost:3001
         }
       ]
 
-
-
    #### Possible Errors
    - **500:** Internal server error.
+     
+#### 8. Get All Transactions of a User by user_id
+   - **URL:** /api/transactions/:id
+   - **Method:** GET
+   - **Description:** Retrieves all transactions of a specific user, identified by the user_id, and ensures the transactions belong to the authenticated user.
+     
+     ##### URL Parameters
+      - **id:** The unique identifier of the transaction.
+     #### Request Header
+     Authorization: Bearer <your-jwt-token>
+     
+     ##### Response Example (Success)
+        {
+        "_id": "64f3bfc8dfb0a9159cbf7a28",
+        "amount": 100,
+        "type": "income",
+        "category": "salary",
+        "date": "2024-10-20T00:00:00.000Z",
+        "user": "64f3bfc8dfb0a9159cbf7a26"
+       }
+
    
-- **GET /api/transactions/:**  Get a specific transaction by ID.
+      #### Possible Errors
+      - **404:** Transaction not found, or it does not belong to the logged-in user.
+      - **500:** Internal server error.
+   
 - **PUT /api/transactions/:** Update a transaction by ID.
 - **DELETE /api/transactions/:** Delete a transaction by ID.
 
