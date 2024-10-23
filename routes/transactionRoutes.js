@@ -3,6 +3,7 @@ const authenticate = require('../middlewares/auth');
 const Transaction = require('../models/Transaction');
 const router = express.Router();
 
+//Posting a new transaction
 router.post('/', authenticate, async (req, res) => {
     try {
         const transaction = new Transaction({ ...req.body, user: req.user.id });
@@ -51,15 +52,10 @@ router.get('/my', authenticate, async (req, res) => {
 
 //Get summary of transactions
 router.get('/summary', authenticate, async (req, res) => {
-    console.log("SAdasdasda")
-    const { startDate, endDate, category } = req.query; // Extract query parameters for filtering
-    console.log(req)
 
     try {
-        // Initialize the query object
         const query = {};
 
-        // Build the query for date and category filters
         if (startDate || endDate) {
             query.date = {}; // Initialize date object if date filters are provided
             if (startDate) {
@@ -107,6 +103,7 @@ router.get('/summary', authenticate, async (req, res) => {
     }
 });
 
+//Get month wise report of all the exsisting transactions
 router.get('/month-wise-report', authenticate, async (req, res) => {
     try {
         // Aggregate transactions by month and category
@@ -133,8 +130,6 @@ router.get('/month-wise-report', authenticate, async (req, res) => {
 });
 
 
-
-
 // Get a specific transaction by transaction_id
 router.get('/:id', authenticate, async (req, res) => {
     const { id } = req.params; // Extract transaction ID from route params
@@ -152,11 +147,11 @@ router.get('/:id', authenticate, async (req, res) => {
     }
 });
 
+//Updating a specific transaction by transaction_id
 router.put('/:id', authenticate, async (req, res) => {
     const { id } = req.params;
 
     try {
-        // Find the transaction by ID irrespective of the user
         const transaction = await Transaction.findById(id);
 
         if (!transaction) {
@@ -167,7 +162,6 @@ router.put('/:id', authenticate, async (req, res) => {
         Object.assign(transaction, req.body);
         await transaction.save();
 
-        // res.send(transaction);
         res.send({ message: "Updated transaction successfully" })
     } catch (error) {
         res.status(400).send(error);
@@ -179,7 +173,6 @@ router.delete('/:id', authenticate, async (req, res) => {
     const { id } = req.params;
 
     try {
-        // Find the transaction by ID irrespective of the user and  Delete the transaction
         const transaction = await Transaction.findByIdAndDelete(id);
 
         if (!transaction) {

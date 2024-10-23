@@ -1,7 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const User = require('../models/User'); // Ensure User model is correctly defined
+const User = require('../models/User'); 
 require('dotenv').config();
 
 const router = express.Router();
@@ -34,7 +34,6 @@ router.post('/login', async (req, res) => {
         }
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-        console.log('Generated Token:', token);  // Log token for debugging
         res.cookie('jwt_token', token, { httpOnly: true });
         res.send({ message: 'Login successful', token });
     } catch (error) {
