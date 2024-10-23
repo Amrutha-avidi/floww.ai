@@ -41,15 +41,15 @@ The server will start on http://localhost:3001
 - **Description**: Registers a new user with a name and password.
 
    ##### Request Body
-   {
-     "name": "your_name",
-     "password": "your_password"
-   }
+      {
+        "name": "your_name",
+        "password": "your_password"
+      }
    
    #### Response Body
-   {
-     "message": "User registered successfully"
-   }
+      {
+        "message": "User registered successfully"
+      }
    #### Possible Errors
    - **400:** User already exists.
    - **500:** Error registering user.
@@ -61,17 +61,17 @@ The server will start on http://localhost:3001
    - **Description**: Registers a new user with a name and password.
    
    ##### Request Body
-   {
-     "name": "your_registered_name",
-     "password": "your_registered_password"
-   }
+      {
+        "name": "your_registered_name",
+        "password": "your_registered_password"
+      }
 
    
    #### Response Body
-   {
-     "message": "Login successful",
-     "token": "your_jwt_token"
-   }
+      {
+        "message": "Login successful",
+        "token": "your_jwt_token"
+      }
    #### Possible Errors
    - **400:** Invalid credentials.
    - **500:** Error logging in.
@@ -90,15 +90,15 @@ The server will start on http://localhost:3001
         "date": "2024-10-20"
       }
    #### Response Body
-   {
-     "_id": "64f3bfc8dfb0a9159cbf7a28",
-     "amount": 100,
-     "type": "income",
-     "category": "salary",
-     "date": "2024-10-20T00:00:00.000Z",
-     "user": "64f3bfc8dfb0a9159cbf7a26",
-     "__v": 0
-   }
+      {
+        "_id": "64f3bfc8dfb0a9159cbf7a28",
+        "amount": 100,
+        "type": "income",
+        "category": "salary",
+        "date": "2024-10-20T00:00:00.000Z",
+        "user": "64f3bfc8dfb0a9159cbf7a26",
+        "__v": 0
+      }
 
    #### Possible Errors
    - **400:** Invalid input data.
