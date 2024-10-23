@@ -83,7 +83,7 @@ The server will start on http://localhost:3001
    - **Method:** POST
    - **Description:** Adds a new transaction for the authenticated user.
 
-   ##### Request Body
+   #### Request Body
       {
         "amount": 100,
         "type": "income",
@@ -115,20 +115,20 @@ The server will start on http://localhost:3001
       - **limit:** (optional) The number of transactions per page, default is 10.
 
     ##### Response Example
-      {
-      "transactions": [
         {
-          "_id": "64f3bfc8dfb0a9159cbf7a28",
-          "amount": 100,
-          "type": "income",
-          "category": "salary",
-          "date": "2024-10-20T00:00:00.000Z",
-          "user": "64f3bfc8dfb0a9159cbf7a26"
+        "transactions": [
+          {
+            "_id": "64f3bfc8dfb0a9159cbf7a28",
+            "amount": 100,
+            "type": "income",
+            "category": "salary",
+            "date": "2024-10-20T00:00:00.000Z",
+            "user": "64f3bfc8dfb0a9159cbf7a26"
+          }
+        ],
+        "totalPages": 3,
+        "currentPage": 1
         }
-      ],
-      "totalPages": 3,
-      "currentPage": 1
-      }
 
 
     #### Possible Errors
