@@ -40,17 +40,17 @@ The server will start on http://localhost:3001
 - **Method**: POST
 - **Description**: Registers a new user with a name and password.
 
-   ##### Request Body
-      {
-        "name": "your_name",
-        "password": "your_password"
-      }
+  #### Request Body
+    {
+      "name": "your_name",
+      "password": "your_password"
+    }
    
-   #### Response Body
-      {
-        "message": "User registered successfully"
-      }
-   #### Possible Errors
+  #### Response Body
+    {
+      "message": "User registered successfully"
+    }
+  #### Possible Errors
    - **400:** User already exists.
    - **500:** Error registering user.
 
@@ -72,6 +72,7 @@ The server will start on http://localhost:3001
         "message": "Login successful",
         "token": "your_jwt_token"
       }
+
    #### Possible Errors
    - **400:** Invalid credentials.
    - **500:** Error logging in.
@@ -83,7 +84,7 @@ The server will start on http://localhost:3001
    - **Description:** Adds a new transaction for the authenticated user.
 
    ##### Request Body
-     {
+      {
         "amount": 100,
         "type": "income",
         "category": "salary",
@@ -104,170 +105,173 @@ The server will start on http://localhost:3001
    - **400:** Invalid input data.
    - **500:** Internal server error.
 
- #### 4. Get all transactions with pagination
-   - **URL:** /api/transactions
-   - **Method:** GET
-   - **Description:** Retrieves all transactions with pagination.
-      #### Query Parameters
-     - **page:** (optional) The page number to retrieve, default is 1.
-     - **limit:** (optional) The number of transactions per page, default is 10.
-   ##### Response Example
-    {
-     "transactions": [
-       {
-         "_id": "64f3bfc8dfb0a9159cbf7a28",
-         "amount": 100,
-         "type": "income",
-         "category": "salary",
-         "date": "2024-10-20T00:00:00.000Z",
-         "user": "64f3bfc8dfb0a9159cbf7a26"
-       }
-     ],
-     "totalPages": 3,
-     "currentPage": 1
-   }
+  #### 4. Get all transactions with pagination
+    - **URL:** /api/transactions
+    - **Method:** GET
+    - **Description:** Retrieves all transactions with pagination.
+
+        #### Query Parameters
+      - **page:** (optional) The page number to retrieve, default is 1.
+      - **limit:** (optional) The number of transactions per page, default is 10.
+
+    ##### Response Example
+      {
+      "transactions": [
+        {
+          "_id": "64f3bfc8dfb0a9159cbf7a28",
+          "amount": 100,
+          "type": "income",
+          "category": "salary",
+          "date": "2024-10-20T00:00:00.000Z",
+          "user": "64f3bfc8dfb0a9159cbf7a26"
+        }
+      ],
+      "totalPages": 3,
+      "currentPage": 1
+      }
 
 
-   #### Possible Errors
+    #### Possible Errors
+    - **500:** Internal server error.
+     
+  #### 5. Get a specific transaction
+    - **URL:** /api/transactions/:id
+    - **Method:** GET
+    - **Description:** Retrieves a specific transaction by its ID.
+
+        #### URL Parameters
+        - **id:** The unique identifier of the transaction.
+
+    ##### Response Example
+      {
+      "_id": "64f3bfc8dfb0a9159cbf7a28",
+      "amount": 100,
+      "type": "income",
+      "category": "salary",
+      "date": "2024-10-20T00:00:00.000Z",
+      "user": "64f3bfc8dfb0a9159cbf7a26"
+      }
+
+    #### Possible Errors
    - **500:** Internal server error.
      
- #### 5. Get a specific transaction
-   - **URL:** /api/transactions/:id
-   - **Method:** GET
-   - **Description:** Retrieves a specific transaction by its ID.
-      #### URL Parameters
-     - **id:** The unique identifier of the transaction.
+  #### 6. Get summary of transactions
+    - **URL:** /api/transactions/summary
+    - **Method:** GET
+    - **Description:** Retrieves a summary of all transactions (total income, total expenses, balance) within a date range.
+        #### Query Parameters
+          - **startDate:** (optional) Start of the date range.
+          - **endDate:** (optional) End of the date range.
+          - **category:** (optional) Filter by category.
 
-   ##### Response Example
-    {
-     "_id": "64f3bfc8dfb0a9159cbf7a28",
-     "amount": 100,
-     "type": "income",
-     "category": "salary",
-     "date": "2024-10-20T00:00:00.000Z",
-     "user": "64f3bfc8dfb0a9159cbf7a26"
-     }
-
-   #### Possible Errors
-   - **500:** Internal server error.
-     
- #### 6. Get summary of transactions
-   - **URL:** /api/transactions/summary
-   - **Method:** GET
-   - **Description:** Retrieves a summary of all transactions (total income, total expenses, balance) within a date range.
-      #### Query Parameters
-        - **startDate:** (optional) Start of the date range.
-        - **endDate:** (optional) End of the date range.
-        - **category:** (optional) Filter by category.
-
-   ##### Response Example
-    {
-     "totalIncome": 3000,
-     "totalExpenses": 1200,
-     "balance": 1800
-    }
+    ##### Response Example
+      {
+      "totalIncome": 3000,
+      "totalExpenses": 1200,
+      "balance": 1800
+      }
 
 
-   #### Possible Errors
+    #### Possible Errors
    - **400:** Invalid Date format.
    - **500:** Internal server error.
 
-#### 7. Generate monthly report by category
-   - **URL:** /api/transactions/month-wise-report
-   - **Method:** GET
-   - **Description:** Retrieves monthly transactions grouped by category.
-     
-   ##### Response Example
-       [
-        {
-          "_id": {
-            "month": 10,
-            "category": "salary"
+  #### 7. Generate monthly report by category
+    - **URL:** /api/transactions/month-wise-report
+    - **Method:** GET
+    - **Description:** Retrieves monthly transactions grouped by category.
+      
+    ##### Response Example
+        [
+          {
+            "_id": {
+              "month": 10,
+              "category": "salary"
+            },
+            "totalAmount": 3000
           },
-          "totalAmount": 3000
-        },
-        {
-          "_id": {
-            "month": 10,
-            "category": "groceries"
-          },
-          "totalAmount": 400
-        }
-      ]
+          {
+            "_id": {
+              "month": 10,
+              "category": "groceries"
+            },
+            "totalAmount": 400
+          }
+        ]
 
-   #### Possible Errors
+    #### Possible Errors
    - **500:** Internal server error.
      
-#### 8. Get All Transactions of a User by user_id
-   - **URL:** /api/transactions/:id
-   - **Method:** GET
-   - **Description:** Retrieves all transactions of a specific user, identified by the user_id, and ensures the transactions belong to the authenticated user.
-     
-     ##### URL Parameters
-      - **id:** The unique identifier of the transaction.
-     #### Request Header
-     Authorization: Bearer <your-jwt-token>
-     
-     ##### Response Example (Success)
-        {
-        "_id": "64f3bfc8dfb0a9159cbf7a28",
-        "amount": 100,
-        "type": "income",
-        "category": "salary",
-        "date": "2024-10-20T00:00:00.000Z",
-        "user": "64f3bfc8dfb0a9159cbf7a26"
-       }
+  #### 8. Get All Transactions of a User by user_id
+    - **URL:** /api/transactions/:id
+    - **Method:** GET
+    - **Description:** Retrieves all transactions of a specific user, identified by the user_id, and ensures the transactions belong to the authenticated user.
+      
+      ##### URL Parameters
+        - **id:** The unique identifier of the transaction.
+      #### Request Header
+      Authorization: Bearer <your-jwt-token>
+      
+      ##### Response Example (Success)
+          {
+          "_id": "64f3bfc8dfb0a9159cbf7a28",
+          "amount": 100,
+          "type": "income",
+          "category": "salary",
+          "date": "2024-10-20T00:00:00.000Z",
+          "user": "64f3bfc8dfb0a9159cbf7a26"
+        }
 
-   
-      #### Possible Errors
+    
+        #### Possible Errors
       - **404:** Transaction not found, or it does not belong to the logged-in user.
       - **500:** Internal server error.
         
-#### 9. Update a Specific Transaction by transaction_id
-   - **URL:** /api/transactions/:id
-   - **Method:** PUT
-   - **Description:** Updates a specific transaction by its transaction_id.
-     
-     ##### URL Parameters
-      - **id:** The unique identifier of the transaction.
-     #### Request Header
-     Authorization: Bearer <your-jwt-token>
-     
-     ##### Request Example 
-        {
-        "type": "income",
-        "category": "Freelancing",
-        "amount": "1500",
-        "description": "Payment for freelance work"
-        }
-     #### Response Example
-     {
-       "message": "Updated transaction successfully"
-     }
-     
-     #### Possible Errors
-      - **404:** Transaction not found
-      - **400:** Invalid input.
-      - **500:** Internal server error.
-   
-#### 10. Delete a Specific Transaction by transaction_id
-   - **URL:** /api/transactions/:id
-   - **Method:** DELETE
-   - **Description:** Deletes a specific transaction by its transaction_id.
-     
-     ##### URL Parameters
-      - **id:** The unique identifier of the transaction.
-     #### Request Header
-     Authorization: Bearer <your-jwt-token>
-     
-
-     #### Response Example
-       {
-        "message": "Transaction deleted successfully"
+  #### 9. Update a Specific Transaction by transaction_id
+    - **URL:** /api/transactions/:id
+    - **Method:** PUT
+    - **Description:** Updates a specific transaction by its transaction_id.
+      
+      ##### URL Parameters
+        - **id:** The unique identifier of the transaction.
+      #### Request Header
+      Authorization: Bearer <your-jwt-token>
+      
+      ##### Request Example 
+          {
+          "type": "income",
+          "category": "Freelancing",
+          "amount": "1500",
+          "description": "Payment for freelance work"
+          }
+      #### Response Example
+      {
+        "message": "Updated transaction successfully"
       }
+      
+      #### Possible Errors
+        - **404:** Transaction not found
+        - **400:** Invalid input.
+        - **500:** Internal server error.
+    
+  #### 10. Delete a Specific Transaction by transaction_id
+    - **URL:** /api/transactions/:id
+    - **Method:** DELETE
+    - **Description:** Deletes a specific transaction by its transaction_id.
+      
+      ##### URL Parameters
+        - **id:** The unique identifier of the transaction.
+      #### Request Header
+      Authorization: Bearer <your-jwt-token>
+      
 
-     
-     #### Possible Errors
+      #### Response Example
+        {
+          "message": "Transaction deleted successfully"
+        }
+
+      
+      #### Possible Errors
       - **404:** Transaction not found
       - **500:** Internal server error.
 
