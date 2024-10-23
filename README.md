@@ -59,7 +59,9 @@ This project is a basic API built using **Node.js**, **Express**, and **MongoDB*
     ```
   #### Possible Errors
    - **400:** User already exists.
-   - **500:** Error registering user.
+   - **500:** Error registering user.!
+[Screenshot (147)](https://github.com/user-attachments/assets/49e37acc-d2c1-4a8d-a270-da35c8c53586)
+
 
 #### 2. Login the Registered User
    - **URL**: `/api/auth/login`
