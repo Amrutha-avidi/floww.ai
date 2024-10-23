@@ -60,7 +60,10 @@ This project is a basic API built using **Node.js**, **Express**, and **MongoDB*
   #### Possible Errors
    - **400:** User already exists.
    - **500:** Error registering user.!
-[Screenshot (147)](https://github.com/user-attachments/assets/49e37acc-d2c1-4a8d-a270-da35c8c53586)
+     
+  #### API Result
+  ![1 Register](https://github.com/user-attachments/assets/026738b9-9fa3-49eb-b8dc-ccc040e31b0a)
+
 
 
 #### 2. Login the Registered User
@@ -86,6 +89,11 @@ This project is a basic API built using **Node.js**, **Express**, and **MongoDB*
    - **400:** Invalid credentials.
    - **500:** Error logging in.
 
+   #### API Result
+   ![2 Login](https://github.com/user-attachments/assets/e13af417-9380-4cf8-9736-4a07d6be5bb3)
+   ![3 Login Invalid](https://github.com/user-attachments/assets/9b95fdca-f1d8-43da-b953-55cd59396ca2)
+
+
 ### Transaction Routes
 
 #### 3. Create a transaction
@@ -103,7 +111,6 @@ This project is a basic API built using **Node.js**, **Express**, and **MongoDB*
       }
      
    #### Response Body
-      
       {
         "_id": "64f3bfc8dfb0a9159cbf7a28",
         "amount": 100,
@@ -117,6 +124,9 @@ This project is a basic API built using **Node.js**, **Express**, and **MongoDB*
    #### Possible Errors
    - **400:** Invalid input data.
    - **500:** Internal server error.
+   #### API Result
+   ![4  Posting New Transaction](https://github.com/user-attachments/assets/f79162c5-ceb9-4e39-9762-878fe098e88c)
+
 
 #### 4. Get all transactions with pagination
   - **URL**: `/api/transactions`
@@ -147,6 +157,9 @@ This project is a basic API built using **Node.js**, **Express**, and **MongoDB*
 
     #### Possible Errors
     - **500:** Internal server error.
+      
+    #### API Result
+    ![5  Get all transactions with pagination](https://github.com/user-attachments/assets/5c949440-d018-4e3d-8c61-65ca6ffe3ed2)
 
 #### 5. Get a specific transaction
   - **URL**: `/api/transactions/:id`
@@ -170,6 +183,10 @@ This project is a basic API built using **Node.js**, **Express**, and **MongoDB*
   #### Possible Errors
   - **500:** Internal server error.
 
+  #### API Result
+  ![6  Get transaction by Id](https://github.com/user-attachments/assets/a891521d-751d-4945-8e54-141042d7cee4)
+
+
 #### 6. Get summary of transactions
   - **URL**: `/api/transactions/summary`
   - **Method**: GET
@@ -192,6 +209,9 @@ This project is a basic API built using **Node.js**, **Express**, and **MongoDB*
         #### Possible Errors
       - **400:** Invalid Date format.
       - **500:** Internal server error.
+    #### API Result
+    ![9  Transaction Summary](https://github.com/user-attachments/assets/2e94c6bd-6712-48c4-b598-ef84cdf46b65)
+
 
 #### 7. Generate monthly report by category
   - **URL**: `/api/transactions/month-wise-report`
@@ -221,7 +241,7 @@ This project is a basic API built using **Node.js**, **Express**, and **MongoDB*
     #### Possible Errors
    - **500:** Internal server error.
 
-#### 8. Get All Transactions of a User by user_id
+#### 8. Get transaction by transaction id
   - **URL**: `/api/transactions/:id`
   - **Method**: GET
   - **Description**: Retrieves all transactions of a specific user, identified by the user_id, and ensures the transactions belong to the authenticated user.
@@ -246,6 +266,11 @@ This project is a basic API built using **Node.js**, **Express**, and **MongoDB*
       #### Possible Errors
     - **404:** Transaction not found, or it does not belong to the logged-in user.
     - **500:** Internal server error.
+
+    #### API Result
+    ![6  Get transaction by Id](https://github.com/user-attachments/assets/26752e0e-675b-44cc-b462-3470c375c3fa)
+
+
         
 #### 9. Update a Specific Transaction by transaction_id
   - **URL**: `/api/transactions/:id`
