@@ -222,9 +222,54 @@ The server will start on http://localhost:3001
       #### Possible Errors
       - **404:** Transaction not found, or it does not belong to the logged-in user.
       - **500:** Internal server error.
+        
+#### 9. Update a Specific Transaction by transaction_id
+   - **URL:** /api/transactions/:id
+   - **Method:** PUT
+   - **Description:** Updates a specific transaction by its transaction_id.
+     
+     ##### URL Parameters
+      - **id:** The unique identifier of the transaction.
+     #### Request Header
+     Authorization: Bearer <your-jwt-token>
+     
+     ##### Request Example 
+        {
+        "type": "income",
+        "category": "Freelancing",
+        "amount": "1500",
+        "description": "Payment for freelance work"
+        }
+     #### Response Example
+     {
+       "message": "Updated transaction successfully"
+     }
+     
+     #### Possible Errors
+      - **404:** Transaction not found
+      - **400:** Invalid input.
+      - **500:** Internal server error.
    
-- **PUT /api/transactions/:** Update a transaction by ID.
-- **DELETE /api/transactions/:** Delete a transaction by ID.
+#### 10. Delete a Specific Transaction by transaction_id
+   - **URL:** /api/transactions/:id
+   - **Method:** DELETE
+   - **Description:** Deletes a specific transaction by its transaction_id.
+     
+     ##### URL Parameters
+      - **id:** The unique identifier of the transaction.
+     #### Request Header
+     Authorization: Bearer <your-jwt-token>
+     
+
+     #### Response Example
+       {
+        "message": "Transaction deleted successfully"
+      }
+
+     
+     #### Possible Errors
+      - **404:** Transaction not found
+      - **500:** Internal server error.
 
 ### Middleware
 - **Authentication:** All routes related to transactions are protected and require a valid JWT token.
