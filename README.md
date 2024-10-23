@@ -34,3 +34,27 @@ The server will start on http://localhost:3001
 
 ### Authentication Routes
 - **POST /api/auth/register:** Register a new user.
+- **POST /api/auth/login:** Login with an existing user.
+- 
+### Transaction Routes
+- **POST /api/transactions:** Create a new transaction (requires authentication).
+- **GET /api/transactions:** Get all transactions with pagination.
+- **GET /api/transactions/my:** Get all transactions for the logged-in user with pagination.
+- **GET /api/transactions/summary:** Get a summary of transactions based on filters (e.g., date range, category).
+- **GET /api/transactions/month-wise-report:** Generate a report of transactions grouped by month and category.
+- **GET /api/transactions/:**  Get a specific transaction by ID.
+- **PUT /api/transactions/:** Update a transaction by ID.
+- **DELETE /api/transactions/:** Delete a transaction by ID.
+
+### Middleware
+- **Authentication:** All routes related to transactions are protected and require a valid JWT token.
+
+## Models
+
+### User
+1. ``` javascript
+   {
+     name: String,
+     password: String
+   }
+
