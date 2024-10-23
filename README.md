@@ -147,15 +147,15 @@ This project is a basic API built using **Node.js**, **Express**, and **MongoDB*
     - **500:** Internal server error.
 
 #### 5. Get a specific transaction
-    - **URL**: `/api/transactions/:id`
-    - **Method**: GET
-    - **Description**: Retrieves a specific transaction by its ID.
+  - **URL**: `/api/transactions/:id`
+  - **Method**: GET
+  - **Description**: Retrieves a specific transaction by its ID.
 
         #### URL Parameters
         - **id**: The unique identifier of the transaction.
 
     ##### Response Example
-      ```json
+      
       {
         "_id": "64f3bfc8dfb0a9159cbf7a28",
         "amount": 100,
@@ -164,15 +164,15 @@ This project is a basic API built using **Node.js**, **Express**, and **MongoDB*
         "date": "2024-10-20T00:00:00.000Z",
         "user": "64f3bfc8dfb0a9159cbf7a26"
       }
-      ```
+      
 
     #### Possible Errors
    - **500:** Internal server error.
 
 #### 6. Get summary of transactions
-    - **URL**: `/api/transactions/summary`
-    - **Method**: GET
-    - **Description**: Retrieves a summary of all transactions (total income, total expenses, balance) within a date range.
+  - **URL**: `/api/transactions/summary`
+  - **Method**: GET
+  - **Description**: Retrieves a summary of all transactions (total income, total expenses, balance) within a date range.
 
         #### Query Parameters
           - **startDate**: (optional) Start of the date range.
@@ -180,25 +180,25 @@ This project is a basic API built using **Node.js**, **Express**, and **MongoDB*
           - **category**: (optional) Filter by category.
 
     ##### Response Example
-      ```json
+      
       {
         "totalIncome": 3000,
         "totalExpenses": 1200,
         "balance": 1800
       }
-      ```
+      
 
     #### Possible Errors
    - **400:** Invalid Date format.
    - **500:** Internal server error.
 
 #### 7. Generate monthly report by category
-    - **URL**: `/api/transactions/month-wise-report`
-    - **Method**: GET
-    - **Description**: Retrieves monthly transactions grouped by category.
+  - **URL**: `/api/transactions/month-wise-report`
+  - **Method**: GET
+  - **Description**: Retrieves monthly transactions grouped by category.
       
     ##### Response Example
-        ```json
+        
         [
           {
             "_id": {
@@ -215,15 +215,15 @@ This project is a basic API built using **Node.js**, **Express**, and **MongoDB*
             "totalAmount": 400
           }
         ]
-        ```
+        
 
     #### Possible Errors
    - **500:** Internal server error.
 
 #### 8. Get All Transactions of a User by user_id
-    - **URL**: `/api/transactions/:id`
-    - **Method**: GET
-    - **Description**: Retrieves all transactions of a specific user, identified by the user_id, and ensures the transactions belong to the authenticated user.
+  - **URL**: `/api/transactions/:id`
+  - **Method**: GET
+  - **Description**: Retrieves all transactions of a specific user, identified by the user_id, and ensures the transactions belong to the authenticated user.
       
       ##### URL Parameters
         - **id**: The unique identifier of the user.
@@ -231,7 +231,7 @@ This project is a basic API built using **Node.js**, **Express**, and **MongoDB*
       `Authorization: Bearer <your-jwt-token>`
       
       ##### Response Example (Success)
-          ```json
+          
           {
             "_id": "64f3bfc8dfb0a9159cbf7a28",
             "amount": 100,
@@ -240,16 +240,16 @@ This project is a basic API built using **Node.js**, **Express**, and **MongoDB*
             "date": "2024-10-20T00:00:00.000Z",
             "user": "64f3bfc8dfb0a9159cbf7a26"
           }
-          ```
+          
 
         #### Possible Errors
       - **404:** Transaction not found, or it does not belong to the logged-in user.
       - **500:** Internal server error.
         
 #### 9. Update a Specific Transaction by transaction_id
-    - **URL**: `/api/transactions/:id`
-    - **Method**: PUT
-    - **Description**: Updates a specific transaction by its transaction_id.
+  - **URL**: `/api/transactions/:id`
+  - **Method**: PUT
+  - **Description**: Updates a specific transaction by its transaction_id.
       
       ##### URL Parameters
         - **id**: The unique identifier of the transaction.
@@ -257,20 +257,20 @@ This project is a basic API built using **Node.js**, **Express**, and **MongoDB*
       `Authorization: Bearer <your-jwt-token>`
       
       ##### Request Example 
-          ```json
+          
           {
             "type": "income",
             "category": "Freelancing",
             "amount": "1500",
             "description": "Payment for freelance work"
           }
-          ```
+        
       #### Response Example
-      ```json
+     
       {
         "message": "Updated transaction successfully"
       }
-      ```
+     
       
       #### Possible Errors
         - **404:** Transaction not found
@@ -278,9 +278,9 @@ This project is a basic API built using **Node.js**, **Express**, and **MongoDB*
         - **500:** Internal server error.
     
 #### 10. Delete a Specific Transaction by transaction_id
-    - **URL**: `/api/transactions/:id`
-    - **Method**: DELETE
-    - **Description**: Deletes a specific transaction by its transaction_id.
+  - **URL**: `/api/transactions/:id`
+  - **Method**: DELETE
+  - **Description**: Deletes a specific transaction by its transaction_id.
       
       ##### URL Parameters
         - **id**: The unique identifier of the transaction.
