@@ -151,8 +151,8 @@ This project is a basic API built using **Node.js**, **Express**, and **MongoDB*
   - **Method**: GET
   - **Description**: Retrieves a specific transaction by its ID.
 
-        #### URL Parameters
-        - **id**: The unique identifier of the transaction.
+  #### URL Parameters
+  - **id**: The unique identifier of the transaction.
 
     ##### Response Example
       
@@ -166,8 +166,8 @@ This project is a basic API built using **Node.js**, **Express**, and **MongoDB*
       }
       
 
-    #### Possible Errors
-   - **500:** Internal server error.
+  #### Possible Errors
+  - **500:** Internal server error.
 
 #### 6. Get summary of transactions
   - **URL**: `/api/transactions/summary`
