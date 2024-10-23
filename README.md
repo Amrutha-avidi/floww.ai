@@ -155,15 +155,14 @@ This project is a basic API built using **Node.js**, **Express**, and **MongoDB*
   - **id**: The unique identifier of the transaction.
 
     ##### Response Example
-      
-      {
-        "_id": "64f3bfc8dfb0a9159cbf7a28",
-        "amount": 100,
-        "type": "income",
-        "category": "salary",
-        "date": "2024-10-20T00:00:00.000Z",
-        "user": "64f3bfc8dfb0a9159cbf7a26"
-      }
+        {
+          "_id": "64f3bfc8dfb0a9159cbf7a28",
+          "amount": 100,
+          "type": "income",
+          "category": "salary",
+          "date": "2024-10-20T00:00:00.000Z",
+          "user": "64f3bfc8dfb0a9159cbf7a26"
+        }
       
 
   #### Possible Errors
