@@ -52,9 +52,36 @@ The server will start on http://localhost:3001
 ## Models
 
 ### User
-1. ``` javascript
+ 
    {
      name: String,
      password: String
    }
 
+### Transaction
+ 
+   {
+     amount: Number,
+     type: String (e.g., "income" or "expense"),
+     category: String,
+     date: Date,
+     user: ObjectId (reference to the User)
+   }
+
+### Category
+ 
+   {
+     name: String,
+     password: String
+   }
+
+## Technologies Used
+- **Node.js:** Backend runtime environment.
+- **Express:** Web framework for building the API.
+- **MongoDB:** NoSQL database.
+- **Mongoose:** ODM for MongoDB.
+- **JWT:** Token-based authentication.
+- **Bcrypt.js:** Password hashing.
+
+### Author
+AVIDI AMRUTHAVALLI - https://github.com/Amrutha-avidi
