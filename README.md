@@ -56,7 +56,7 @@ The server will start on http://localhost:3001
 - **500:** Error registering user.
 
 - **POST /api/auth/login:** Login with an existing user.
-  #### 1. LOgin the Resgistered User
+#### 2. Login the Resgistered User
 
 - **URL**: `/api/auth/login`
 - **Method**: POST
