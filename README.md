@@ -146,15 +146,60 @@ The server will start on http://localhost:3001
      "category": "salary",
      "date": "2024-10-20T00:00:00.000Z",
      "user": "64f3bfc8dfb0a9159cbf7a26"
-   }
+     }
+
+   #### Possible Errors
+   - **500:** Internal server error.
+     
+ #### 6. Get summary of transactions
+   - **URL:** /api/transactions/summary
+   - **Method:** GET
+   - **Description:** Retrieves a summary of all transactions (total income, total expenses, balance) within a date range.
+      #### Query Parameters
+        - **startDate:** (optional) Start of the date range.
+        - **endDate:** (optional) End of the date range.
+        - **category:** (optional) Filter by category.
+
+   ##### Response Example
+    {
+     "totalIncome": 3000,
+     "totalExpenses": 1200,
+     "balance": 1800
+    }
+
+
+   #### Possible Errors
+   - **400:** Invalid Date format.
+   - **500:** Internal server error.
+
+#### 7. Generate monthly report by category
+   - **URL:** /api/transactions/month-wise-report
+   - **Method:** GET
+   - **Description:** Retrieves monthly transactions grouped by category.
+     
+   ##### Response Example
+       [
+        {
+          "_id": {
+            "month": 10,
+            "category": "salary"
+          },
+          "totalAmount": 3000
+        },
+        {
+          "_id": {
+            "month": 10,
+            "category": "groceries"
+          },
+          "totalAmount": 400
+        }
+      ]
 
 
 
    #### Possible Errors
    - **500:** Internal server error.
-- **GET /api/transactions/my:** Get all transactions for the logged-in user with pagination.
-- **GET /api/transactions/summary:** Get a summary of transactions based on filters (e.g., date range, category).
-- **GET /api/transactions/month-wise-report:** Generate a report of transactions grouped by month and category.
+   
 - **GET /api/transactions/:**  Get a specific transaction by ID.
 - **PUT /api/transactions/:** Update a transaction by ID.
 - **DELETE /api/transactions/:** Delete a transaction by ID.
@@ -168,28 +213,27 @@ The API uses **JWT tokens** for authentication. Each authenticated request must 
 ## Models
 
 ### User
- 
-   {
-     name: String,
-     password: String
-   }
+{
+  name: String,
+  password: String
+}
 
 ### Transaction
  
-   {
-     amount: Number,
-     type: String (e.g., "income" or "expense"),
-     category: String,
-     date: Date,
-     user: ObjectId (reference to the User)
-   }
+{
+  amount: Number,
+  type: String (e.g., "income" or "expense"),
+  category: String,
+  date: Date,
+  user: ObjectId (reference to the User)
+}
 
 ### Category
  
-   {
-     name: String,
-     password: String
-   }
+{
+  name: String,
+  password: String
+}
 
 ## Technologies Used
 - **Node.js:** Backend runtime environment.
