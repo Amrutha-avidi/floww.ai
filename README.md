@@ -285,7 +285,8 @@ This project is a basic API built using **Node.js**, **Express**, and **MongoDB*
     - **500:** Internal server error.
 
     #### API Result
-    ![6  Get transaction by Id](https://github.com/user-attachments/assets/26752e0e-675b-44cc-b462-3470c375c3fa)
+    ![Screenshot (158)](https://github.com/user-attachments/assets/40ae7022-6238-4b58-8b22-b8699327ec87)
+
 
 
         
