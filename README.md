@@ -33,7 +33,6 @@ The server will start on http://localhost:3001
 ## API Endpoints
 
 ### Authentication Routes
-- **POST /api/auth/register:** Register a new user.
 
 #### 1. Register a new user
 
@@ -41,44 +40,118 @@ The server will start on http://localhost:3001
 - **Method**: POST
 - **Description**: Registers a new user with a name and password.
 
-##### Request Body
-{
-  "name": "your_name",
-  "password": "your_password"
-}
+   ##### Request Body
+   {
+     "name": "your_name",
+     "password": "your_password"
+   }
+   
+   #### Response Body
+   {
+     "message": "User registered successfully"
+   }
+   #### Possible Errors
+   - **400:** User already exists.
+   - **500:** Error registering user.
 
-#### Response Body
-{
-  "message": "User registered successfully"
-}
-#### Possible Errors
-- **400:** User already exists.
-- **500:** Error registering user.
+#### 2. Login the Registered User
 
-- **POST /api/auth/login:** Login with an existing user.
-#### 2. Login the Resgistered User
+   - **URL**: `/api/auth/login`
+   - **Method**: POST
+   - **Description**: Registers a new user with a name and password.
+   
+   ##### Request Body
+   {
+     "name": "your_registered_name",
+     "password": "your_registered_password"
+   }
 
-- **URL**: `/api/auth/login`
-- **Method**: POST
-- **Description**: Registers a new user with a name and password.
-
-##### Request Body
-{
-  "name": "your_registered_name",
-  "password": "your_registered_password"
-}
-
-#### Response Body
-{
-  "message": "Login successful",
-  "token": "your_jwt_token"
-}
-#### Possible Errors
-- **400:** Invalid credentials.
-- **500:** Error logging in.
+   
+   #### Response Body
+   {
+     "message": "Login successful",
+     "token": "your_jwt_token"
+   }
+   #### Possible Errors
+   - **400:** Invalid credentials.
+   - **500:** Error logging in.
+     
 ### Transaction Routes
-- **POST /api/transactions:** Create a new transaction (requires authentication).
-- **GET /api/transactions:** Get all transactions with pagination.
+  #### 3. Create a transaction
+   - **URL:** /api/transactions
+   - **Method:** POST
+   - **Description:** Adds a new transaction for the authenticated user.
+
+   ##### Request Body
+     {
+        "amount": 100,
+        "type": "income",
+        "category": "salary",
+        "date": "2024-10-20"
+      }
+   #### Response Body
+   {
+     "_id": "64f3bfc8dfb0a9159cbf7a28",
+     "amount": 100,
+     "type": "income",
+     "category": "salary",
+     "date": "2024-10-20T00:00:00.000Z",
+     "user": "64f3bfc8dfb0a9159cbf7a26",
+     "__v": 0
+   }
+
+   #### Possible Errors
+   - **400:** Invalid input data.
+   - **500:** Internal server error.
+
+ #### 4. Get all transactions with pagination
+   - **URL:** /api/transactions
+   - **Method:** GET
+   - **Description:** Retrieves all transactions with pagination.
+      #### Query Parameters
+     - **page:** (optional) The page number to retrieve, default is 1.
+     - **limit:** (optional) The number of transactions per page, default is 10.
+   ##### Response Example
+    {
+     "transactions": [
+       {
+         "_id": "64f3bfc8dfb0a9159cbf7a28",
+         "amount": 100,
+         "type": "income",
+         "category": "salary",
+         "date": "2024-10-20T00:00:00.000Z",
+         "user": "64f3bfc8dfb0a9159cbf7a26"
+       }
+     ],
+     "totalPages": 3,
+     "currentPage": 1
+   }
+
+
+   #### Possible Errors
+   - **500:** Internal server error.
+     
+ #### 5. Get a specific transaction
+   - **URL:** /api/transactions/:id
+   - **Method:** GET
+   - **Description:** Retrieves a specific transaction by its ID.
+      #### URL Parameters
+     - **id:** The unique identifier of the transaction.
+
+   ##### Response Example
+    {
+     "_id": "64f3bfc8dfb0a9159cbf7a28",
+     "amount": 100,
+     "type": "income",
+     "category": "salary",
+     "date": "2024-10-20T00:00:00.000Z",
+     "user": "64f3bfc8dfb0a9159cbf7a26"
+   }
+
+
+
+   #### Possible Errors
+   - **500:** Internal server error.
 - **GET /api/transactions/my:** Get all transactions for the logged-in user with pagination.
 - **GET /api/transactions/summary:** Get a summary of transactions based on filters (e.g., date range, category).
 - **GET /api/transactions/month-wise-report:** Generate a report of transactions grouped by month and category.
