@@ -281,9 +281,9 @@ This project is a basic API built using **Node.js**, **Express**, and **MongoDB*
   - **Method**: DELETE
   - **Description**: Deletes a specific transaction by its transaction_id.
       
-      ##### URL Parameters
-        - **id**: The unique identifier of the transaction.
-        
+    ##### URL Parameters
+      - **id**: The unique identifier of the transaction.
+
       #### Request Header
       `Authorization: Bearer <your-jwt-token>`
       
