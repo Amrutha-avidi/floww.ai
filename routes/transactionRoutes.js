@@ -130,7 +130,7 @@ router.get('/month-wise-report', authenticate, async (req, res) => {
 });
 
 
-// Get a specific transaction by transaction_id
+// Get a specific transaction by user_id
 router.get('/:id', authenticate, async (req, res) => {
     const { id } = req.params; // Extract transaction ID from route params
 
