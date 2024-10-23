@@ -19,78 +19,89 @@ This project is a basic API built using **Node.js**, **Express**, and **MongoDB*
 ### Installation
 
 1. Clone the repository:
+    ```bash
+    git clone https://github.com/Amrutha-avidi/floww.ai
+    ```
 
-   ```bash
-   git clone https://github.com/Amrutha-avidi/floww.ai
 2. Navigate into the project directory: 
-    ``` bash 
+    ```bash
     cd floww.ai
-3. Install the node_modules
-    ``` bash
+    ```
+
+3. Install the node_modules:
+    ```bash
     npm install
-The server will start on http://localhost:3001
+    ```
+
+   The server will start on `http://localhost:3001`.
 
 ## API Endpoints
 
 ### Authentication Routes
 
 #### 1. Register a new user
-
 - **URL**: `/api/auth/register`
 - **Method**: POST
 - **Description**: Registers a new user with a name and password.
 
   #### Request Body
+    ```json
     {
       "name": "your_name",
       "password": "your_password"
     }
-   
+    ```
   #### Response Body
+    ```json
     {
       "message": "User registered successfully"
     }
+    ```
   #### Possible Errors
    - **400:** User already exists.
    - **500:** Error registering user.
 
 #### 2. Login the Registered User
-
    - **URL**: `/api/auth/login`
    - **Method**: POST
-   - **Description**: Registers a new user with a name and password.
+   - **Description**: Logs in a registered user with their name and password.
    
    ##### Request Body
+      ```json
       {
         "name": "your_registered_name",
         "password": "your_registered_password"
       }
-
-   
+      ```
    #### Response Body
+      ```json
       {
         "message": "Login successful",
         "token": "your_jwt_token"
       }
-
+      ```
    #### Possible Errors
    - **400:** Invalid credentials.
    - **500:** Error logging in.
-     
+
 ### Transaction Routes
-  #### 3. Create a transaction
-   - **URL:** /api/transactions
-   - **Method:** POST
-   - **Description:** Adds a new transaction for the authenticated user.
+
+#### 3. Create a transaction
+   - **URL**: `/api/transactions`
+   - **Method**: POST
+   - **Description**: Adds a new transaction for the authenticated user.
 
    #### Request Body
+      ```json
       {
         "amount": 100,
         "type": "income",
         "category": "salary",
         "date": "2024-10-20"
       }
+      ```
    #### Response Body
+      ```json
       {
         "_id": "64f3bfc8dfb0a9159cbf7a28",
         "amount": 100,
@@ -100,88 +111,94 @@ The server will start on http://localhost:3001
         "user": "64f3bfc8dfb0a9159cbf7a26",
         "__v": 0
       }
-
+      ```
    #### Possible Errors
    - **400:** Invalid input data.
    - **500:** Internal server error.
 
-  #### 4. Get all transactions with pagination
-    - **URL:** /api/transactions
-    - **Method:** GET
-    - **Description:** Retrieves all transactions with pagination.
+#### 4. Get all transactions with pagination
+    - **URL**: `/api/transactions`
+    - **Method**: GET
+    - **Description**: Retrieves all transactions with pagination.
 
     #### Query Parameters
-      - **page:** (optional) The page number to retrieve, default is 1.
-      - **limit:** (optional) The number of transactions per page, default is 10.
+      - **page**: (optional) The page number to retrieve, default is 1.
+      - **limit**: (optional) The number of transactions per page, default is 10.
 
     ##### Response Example
+        ```json
         {
-        "transactions": [
-          {
-            "_id": "64f3bfc8dfb0a9159cbf7a28",
-            "amount": 100,
-            "type": "income",
-            "category": "salary",
-            "date": "2024-10-20T00:00:00.000Z",
-            "user": "64f3bfc8dfb0a9159cbf7a26"
-          }
-        ],
-        "totalPages": 3,
-        "currentPage": 1
+          "transactions": [
+            {
+              "_id": "64f3bfc8dfb0a9159cbf7a28",
+              "amount": 100,
+              "type": "income",
+              "category": "salary",
+              "date": "2024-10-20T00:00:00.000Z",
+              "user": "64f3bfc8dfb0a9159cbf7a26"
+            }
+          ],
+          "totalPages": 3,
+          "currentPage": 1
         }
-
+        ```
 
     #### Possible Errors
     - **500:** Internal server error.
-     
-  #### 5. Get a specific transaction
-    - **URL:** /api/transactions/:id
-    - **Method:** GET
-    - **Description:** Retrieves a specific transaction by its ID.
+
+#### 5. Get a specific transaction
+    - **URL**: `/api/transactions/:id`
+    - **Method**: GET
+    - **Description**: Retrieves a specific transaction by its ID.
 
         #### URL Parameters
-        - **id:** The unique identifier of the transaction.
+        - **id**: The unique identifier of the transaction.
 
     ##### Response Example
+      ```json
       {
-      "_id": "64f3bfc8dfb0a9159cbf7a28",
-      "amount": 100,
-      "type": "income",
-      "category": "salary",
-      "date": "2024-10-20T00:00:00.000Z",
-      "user": "64f3bfc8dfb0a9159cbf7a26"
+        "_id": "64f3bfc8dfb0a9159cbf7a28",
+        "amount": 100,
+        "type": "income",
+        "category": "salary",
+        "date": "2024-10-20T00:00:00.000Z",
+        "user": "64f3bfc8dfb0a9159cbf7a26"
       }
+      ```
 
     #### Possible Errors
    - **500:** Internal server error.
-     
-  #### 6. Get summary of transactions
-    - **URL:** /api/transactions/summary
-    - **Method:** GET
-    - **Description:** Retrieves a summary of all transactions (total income, total expenses, balance) within a date range.
+
+#### 6. Get summary of transactions
+    - **URL**: `/api/transactions/summary`
+    - **Method**: GET
+    - **Description**: Retrieves a summary of all transactions (total income, total expenses, balance) within a date range.
+
         #### Query Parameters
-          - **startDate:** (optional) Start of the date range.
-          - **endDate:** (optional) End of the date range.
-          - **category:** (optional) Filter by category.
+          - **startDate**: (optional) Start of the date range.
+          - **endDate**: (optional) End of the date range.
+          - **category**: (optional) Filter by category.
 
     ##### Response Example
+      ```json
       {
-      "totalIncome": 3000,
-      "totalExpenses": 1200,
-      "balance": 1800
+        "totalIncome": 3000,
+        "totalExpenses": 1200,
+        "balance": 1800
       }
-
+      ```
 
     #### Possible Errors
    - **400:** Invalid Date format.
    - **500:** Internal server error.
 
-  #### 7. Generate monthly report by category
-    - **URL:** /api/transactions/month-wise-report
-    - **Method:** GET
-    - **Description:** Retrieves monthly transactions grouped by category.
+#### 7. Generate monthly report by category
+    - **URL**: `/api/transactions/month-wise-report`
+    - **Method**: GET
+    - **Description**: Retrieves monthly transactions grouped by category.
       
     ##### Response Example
+        ```json
         [
           {
             "_id": {
@@ -198,96 +215,102 @@ The server will start on http://localhost:3001
             "totalAmount": 400
           }
         ]
+        ```
 
     #### Possible Errors
    - **500:** Internal server error.
-     
-  #### 8. Get All Transactions of a User by user_id
-    - **URL:** /api/transactions/:id
-    - **Method:** GET
-    - **Description:** Retrieves all transactions of a specific user, identified by the user_id, and ensures the transactions belong to the authenticated user.
+
+#### 8. Get All Transactions of a User by user_id
+    - **URL**: `/api/transactions/:id`
+    - **Method**: GET
+    - **Description**: Retrieves all transactions of a specific user, identified by the user_id, and ensures the transactions belong to the authenticated user.
       
       ##### URL Parameters
-        - **id:** The unique identifier of the transaction.
+        - **id**: The unique identifier of the user.
       #### Request Header
-      Authorization: Bearer <your-jwt-token>
+      `Authorization: Bearer <your-jwt-token>`
       
       ##### Response Example (Success)
+          ```json
           {
-          "_id": "64f3bfc8dfb0a9159cbf7a28",
-          "amount": 100,
-          "type": "income",
-          "category": "salary",
-          "date": "2024-10-20T00:00:00.000Z",
-          "user": "64f3bfc8dfb0a9159cbf7a26"
-        }
+            "_id": "64f3bfc8dfb0a9159cbf7a28",
+            "amount": 100,
+            "type": "income",
+            "category": "salary",
+            "date": "2024-10-20T00:00:00.000Z",
+            "user": "64f3bfc8dfb0a9159cbf7a26"
+          }
+          ```
 
-    
         #### Possible Errors
       - **404:** Transaction not found, or it does not belong to the logged-in user.
       - **500:** Internal server error.
         
-  #### 9. Update a Specific Transaction by transaction_id
-    - **URL:** /api/transactions/:id
-    - **Method:** PUT
-    - **Description:** Updates a specific transaction by its transaction_id.
+#### 9. Update a Specific Transaction by transaction_id
+    - **URL**: `/api/transactions/:id`
+    - **Method**: PUT
+    - **Description**: Updates a specific transaction by its transaction_id.
       
       ##### URL Parameters
-        - **id:** The unique identifier of the transaction.
+        - **id**: The unique identifier of the transaction.
       #### Request Header
-      Authorization: Bearer <your-jwt-token>
+      `Authorization: Bearer <your-jwt-token>`
       
       ##### Request Example 
+          ```json
           {
-          "type": "income",
-          "category": "Freelancing",
-          "amount": "1500",
-          "description": "Payment for freelance work"
+            "type": "income",
+            "category": "Freelancing",
+            "amount": "1500",
+            "description": "Payment for freelance work"
           }
+          ```
       #### Response Example
+      ```json
       {
         "message": "Updated transaction successfully"
       }
+      ```
       
       #### Possible Errors
         - **404:** Transaction not found
         - **400:** Invalid input.
         - **500:** Internal server error.
     
-  #### 10. Delete a Specific Transaction by transaction_id
-    - **URL:** /api/transactions/:id
-    - **Method:** DELETE
-    - **Description:** Deletes a specific transaction by its transaction_id.
+#### 10. Delete a Specific Transaction by transaction_id
+    - **URL**: `/api/transactions/:id`
+    - **Method**: DELETE
+    - **Description**: Deletes a specific transaction by its transaction_id.
       
       ##### URL Parameters
-        - **id:** The unique identifier of the transaction.
+        - **id**: The unique identifier of the transaction.
       #### Request Header
-      Authorization: Bearer <your-jwt-token>
+      `Authorization: Bearer <your-jwt-token>`
       
-
       #### Response Example
+        ```json
         {
           "message": "Transaction deleted successfully"
         }
-
+        ```
       
       #### Possible Errors
       - **404:** Transaction not found
       - **500:** Internal server error.
 
 ### Middleware
-- **Authentication:** All routes related to transactions are protected and require a valid JWT token.
+- **Authentication**: All routes related to transactions are protected and require a valid JWT token.
 
 ## Authentication 
-The API uses **JWT tokens** for authentication. Each authenticated request must include a valid token.You can obtain the token by logging in via the `/api/auth/login` endpoint.
+The API uses **JWT tokens** for authentication. Each authenticated request must include a valid token. You can obtain the token by logging in via the `/api/auth/login` endpoint.
 
 ## Models
 
 ### User
-   {
-     name: String,
-     password: String
-   }
+{
+  name: String,
+  password: String
+}
 
 ### Transaction
    {
@@ -313,4 +336,4 @@ The API uses **JWT tokens** for authentication. Each authenticated request must 
 - **Bcrypt.js:** Password hashing.
 
 ### Author
-AVIDI AMRUTHAVALLI - https://github.com/Amrutha-avidi
+AVIDI AMRUTHAVALLI - https://github.com/Amrutha-avidi 
