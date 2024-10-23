@@ -34,8 +34,48 @@ The server will start on http://localhost:3001
 
 ### Authentication Routes
 - **POST /api/auth/register:** Register a new user.
+
+#### 1. Register a new user
+
+- **URL**: `/api/auth/register`
+- **Method**: POST
+- **Description**: Registers a new user with a name and password.
+
+##### Request Body
+{
+  "name": "your_name",
+  "password": "your_password"
+}
+
+#### Response Body
+{
+  "message": "User registered successfully"
+}
+#### Possible Errors
+- **400:** User already exists.
+- **500:** Error registering user.
+
 - **POST /api/auth/login:** Login with an existing user.
-- 
+  #### 1. LOgin the Resgistered User
+
+- **URL**: `/api/auth/login`
+- **Method**: POST
+- **Description**: Registers a new user with a name and password.
+
+##### Request Body
+{
+  "name": "your_registered_name",
+  "password": "your_registered_password"
+}
+
+#### Response Body
+{
+  "message": "Login successful",
+  "token": "your_jwt_token"
+}
+#### Possible Errors
+- **400:** Invalid credentials.
+- **500:** Error logging in.
 ### Transaction Routes
 - **POST /api/transactions:** Create a new transaction (requires authentication).
 - **GET /api/transactions:** Get all transactions with pagination.
