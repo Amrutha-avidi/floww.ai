@@ -173,23 +173,23 @@ This project is a basic API built using **Node.js**, **Express**, and **MongoDB*
   - **Method**: GET
   - **Description**: Retrieves a summary of all transactions (total income, total expenses, balance) within a date range.
 
-  #### Query Parameters
-    - **startDate**: (optional) Start of the date range.
-    - **endDate**: (optional) End of the date range.
-    - **category**: (optional) Filter by category.
+    #### Query Parameters
+      - **startDate**: (optional) Start of the date range.
+      - **endDate**: (optional) End of the date range.
+      - **category**: (optional) Filter by category.
 
-    ##### Response Example
-      
-        {
-          "totalIncome": 3000,
-          "totalExpenses": 1200,
-          "balance": 1800
-        }
-      
+        ##### Response Example
+          
+            {
+              "totalIncome": 3000,
+              "totalExpenses": 1200,
+              "balance": 1800
+            }
+          
 
-    #### Possible Errors
-   - **400:** Invalid Date format.
-   - **500:** Internal server error.
+        #### Possible Errors
+      - **400:** Invalid Date format.
+      - **500:** Internal server error.
 
 #### 7. Generate monthly report by category
   - **URL**: `/api/transactions/month-wise-report`
@@ -224,11 +224,11 @@ This project is a basic API built using **Node.js**, **Express**, and **MongoDB*
   - **Method**: GET
   - **Description**: Retrieves all transactions of a specific user, identified by the user_id, and ensures the transactions belong to the authenticated user.
       
-  ##### URL Parameters
-    - **id**: The unique identifier of the user.
-  #### Request Header
-  `Authorization: Bearer <your-jwt-token>`
-      
+    ##### URL Parameters
+      - **id**: The unique identifier of the user.
+    #### Request Header
+    `Authorization: Bearer <your-jwt-token>`
+        
       ##### Response Example (Success)
           
           {
@@ -249,53 +249,53 @@ This project is a basic API built using **Node.js**, **Express**, and **MongoDB*
   - **URL**: `/api/transactions/:id`
   - **Method**: PUT
   - **Description**: Updates a specific transaction by its transaction_id.
-      
-  ##### URL Parameters
-    - **id**: The unique identifier of the transaction.
-  #### Request Header
-  `Authorization: Bearer <your-jwt-token>`
-      
-    ##### Request Example 
         
-        {
-          "type": "income",
-          "category": "Freelancing",
-          "amount": "1500",
-          "description": "Payment for freelance work"
-        }
+    ##### URL Parameters
+      - **id**: The unique identifier of the transaction.
+    #### Request Header
+    `Authorization: Bearer <your-jwt-token>`
       
-    #### Response Example
-    
-    {
-      "message": "Updated transaction successfully"
-    }
-     
+      ##### Request Example 
+          
+          {
+            "type": "income",
+            "category": "Freelancing",
+            "amount": "1500",
+            "description": "Payment for freelance work"
+          }
+        
+      #### Response Example
       
-    #### Possible Errors
-      - **404:** Transaction not found
-      - **400:** Invalid input.
-      - **500:** Internal server error.
+      {
+        "message": "Updated transaction successfully"
+      }
+      
+        
+      #### Possible Errors
+        - **404:** Transaction not found
+        - **400:** Invalid input.
+        - **500:** Internal server error.
     
 #### 10. Delete a Specific Transaction by transaction_id
   - **URL**: `/api/transactions/:id`
   - **Method**: DELETE
   - **Description**: Deletes a specific transaction by its transaction_id.
       
-    ##### URL Parameters
-      - **id**: The unique identifier of the transaction.
-    #### Request Header
-    `Authorization: Bearer <your-jwt-token>`
-    
-    #### Response Example
+      ##### URL Parameters
+        - **id**: The unique identifier of the transaction.
+      #### Request Header
+      `Authorization: Bearer <your-jwt-token>`
       
-      {
-        "message": "Transaction deleted successfully"
-      }
-    
-    
-    #### Possible Errors
-    - **404:** Transaction not found
-    - **500:** Internal server error.
+      #### Response Example
+        
+        {
+          "message": "Transaction deleted successfully"
+        }
+      
+      
+      #### Possible Errors
+      - **404:** Transaction not found
+      - **500:** Internal server error.
 
 ### Middleware
 - **Authentication**: All routes related to transactions are protected and require a valid JWT token.
