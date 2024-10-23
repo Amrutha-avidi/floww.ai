@@ -36,17 +36,24 @@ router.get('/', authenticate, async (req, res) => {
     }
 })
 
-// get all the transactions of the loggedin user  with pagination
-router.get('/my', authenticate, async (req, res) => {
-    const { page = 1, limit = 10 } = req.query;
+// Get all transactions for a specific user by user ID
+router.get('/user/:userId', async (req, res) => {
+    const { userId } = req.params; // Extract user ID from route parameters
+
     try {
-        const transactions = await Transaction.find({ user: req.user.id })
-            .skip((page - 1) * limit)
-            .limit(parseInt(limit));
-        const count = await Transaction.countDocuments({ user: req.user.id });
-        res.send({ transactions, totalPages: Math.ceil(count / limit), currentPage: page });
+        // Find all transactions for the given user ID
+        const transactions = await Transaction.find({ user: userId });
+
+        // If no transactions are found
+        if (!transactions.length) {
+            return res.status(404).send({ message: 'No transactions found for this user' });
+        }
+
+        // Return the list of transactions
+        res.send(transactions);
     } catch (error) {
-        res.status(500).send(error);
+        console.error("Error fetching user transactions:", error);
+        res.status(500).send({ message: 'Internal Server Error', error: error.message });
     }
 });
 
