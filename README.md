@@ -213,27 +213,25 @@ The API uses **JWT tokens** for authentication. Each authenticated request must 
 ## Models
 
 ### User
-{
-  name: String,
-  password: String
-}
+   {
+     name: String,
+     password: String
+   }
 
 ### Transaction
- 
-{
-  amount: Number,
-  type: String (e.g., "income" or "expense"),
-  category: String,
-  date: Date,
-  user: ObjectId (reference to the User)
-}
+   {
+     amount: Number,
+     type: String (e.g., "income" or "expense"),
+     category: String,
+     date: Date,
+     user: ObjectId (reference to the User)
+   }
 
 ### Category
- 
-{
-  name: String,
-  password: String
-}
+   {
+     name: String,
+     password: String
+   }
 
 ## Technologies Used
 - **Node.js:** Backend runtime environment.
